@@ -1,0 +1,5 @@
+/venv
+/src/data/train
+/src/data/test
+/src/data/val
+/src/__pycache__
