@@ -275,7 +275,7 @@ def train(
 
     # Learning rate schedulers
     scheduler_plateau = optim.lr_scheduler.ReduceLROnPlateau(
-        optimizer, mode='max', factor=0.5, patience=5, verbose=True
+        optimizer, mode='max', factor=0.5, patience=5
     )
     scheduler_cosine = optim.lr_scheduler.CosineAnnealingLR(
         optimizer, T_max=epochs, eta_min=learning_rate * 0.01
