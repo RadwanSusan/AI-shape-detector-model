@@ -50,6 +50,9 @@ function setupEventListeners() {
     uploadArea.addEventListener('dragleave', handleDragLeave);
     uploadArea.addEventListener('drop', handleDrop);
 
+    // Paste to upload
+    document.addEventListener('paste', handlePaste);
+
     // Buttons
     analyzeBtn.addEventListener('click', analyzeImage);
     clearBtn.addEventListener('click', resetInterface);
@@ -88,6 +91,48 @@ function handleDrop(e) {
         displayPreview(file);
     } else {
         showError('Please drop a valid image file');
+    }
+}
+
+function handlePaste(e) {
+    // Get clipboard items
+    const items = e.clipboardData?.items;
+    if (!items) return;
+
+    // Find image in clipboard
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+
+        // Check if item is an image
+        if (item.type.indexOf('image') !== -1) {
+            e.preventDefault();
+
+            // Get image as blob
+            const blob = item.getAsFile();
+
+            if (blob && isValidImageFile(blob)) {
+                // Create a proper File object with a name
+                const file = new File([blob], `pasted-image-${Date.now()}.png`, {
+                    type: blob.type
+                });
+
+                selectedFile = file;
+
+                // Create a FileList-like object for the file input
+                const dataTransfer = new DataTransfer();
+                dataTransfer.items.add(file);
+                fileInput.files = dataTransfer.files;
+
+                displayPreview(file);
+
+                // Show a brief notification
+                console.log('✓ Image pasted successfully');
+            } else {
+                showError('Please paste a valid image file');
+            }
+
+            break;
+        }
     }
 }
 
