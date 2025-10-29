@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Shape Detector - Powered by PyTorch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo">🔷</div>
+                <h1 class="hero-title">AI Shape Detector</h1>
+                <p class="hero-subtitle">Upload an image and let AI identify the shape instantly</p>
+                <div class="hero-tags">
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Deep Learning</span>
+                    <span class="tag">95%+ Accuracy</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-card">
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📁</div>
+                        <h3 class="upload-title">Drag & drop your image here</h3>
+                        <p class="upload-text">or click to browse</p>
+                        <p class="upload-formats">Supports: PNG, JPG, JPEG, GIF, BMP</p>
+                        <input type="file" id="fileInput" accept="image/*" hidden>
+                    </div>
+
+                    <!-- Image Preview -->
+                    <div class="preview-area" id="previewArea" style="display: none;">
+                        <img id="previewImage" alt="Preview">
+                        <div class="preview-actions">
+                            <button class="btn btn-primary" id="analyzeBtn">
+                                <span class="btn-icon">🔍</span>
+                                Detect Shape
+                            </button>
+                            <button class="btn btn-secondary" id="clearBtn">
+                                <span class="btn-icon">🔄</span>
+                                Try Another
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div class="loading-state" id="loadingState" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>Analyzing image...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-card">
+                    <h2 class="results-heading">📊 Detection Results</h2>
+
+                    <!-- Main Prediction -->
+                    <div class="main-prediction">
+                        <div class="shape-icon" id="shapeIcon">⬤</div>
+                        <h3 class="predicted-shape" id="predictedShape">CIRCLE</h3>
+                        <div class="confidence-badge" id="confidenceBadge">
+                            <span class="confidence-value" id="confidenceValue">95.6</span>%
+                            <span class="confidence-label">Confidence</span>
+                        </div>
+                    </div>
+
+                    <!-- All Predictions -->
+                    <div class="all-predictions">
+                        <h4 class="predictions-title">All Predictions</h4>
+                        <div class="predictions-list" id="predictionsList">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Processing Time -->
+                    <div class="processing-info">
+                        <span class="processing-label">Processing Time:</span>
+                        <span class="processing-time" id="processingTime">34</span> ms
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3 class="examples-title">How it works</h3>
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <div class="example-number">1</div>
+                        <h4>Upload Image</h4>
+                        <p>Drag and drop or click to select an image containing a shape</p>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-number">2</div>
+                        <h4>AI Analysis</h4>
+                        <p>Our deep learning model analyzes the image in milliseconds</p>
+                    </div>
+                    <div class="example-card">
+                        <div class="example-number">3</div>
+                        <h4>Get Results</h4>
+                        <p>Receive instant predictions with confidence scores</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Supported Shapes -->
+            <section class="shapes-section">
+                <h3 class="shapes-title">Supported Shapes</h3>
+                <div class="shapes-grid">
+                    <div class="shape-item">
+                        <div class="shape-visual circle-visual">⬤</div>
+                        <span>Circle</span>
+                    </div>
+                    <div class="shape-item">
+                        <div class="shape-visual square-visual">◼</div>
+                        <span>Square</span>
+                    </div>
+                    <div class="shape-item">
+                        <div class="shape-visual triangle-visual">▲</div>
+                        <span>Triangle</span>
+                    </div>
+                    <div class="shape-item">
+                        <div class="shape-visual rectangle-visual">▭</div>
+                        <span>Rectangle</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">
+                Built with <span class="heart">❤️</span> using <strong>PyTorch</strong>
+            </p>
+            <p class="footer-links">
+                <a href="https://github.com/RadwanSusan/AI-shape-detector-model" target="_blank" rel="noopener">
+                    GitHub Repository
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

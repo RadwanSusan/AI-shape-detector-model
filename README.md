@@ -8,6 +8,7 @@ A simple and minimal deep learning model built with PyTorch to detect basic geom
 - **Synthetic Data Generation**: Automated generation of training data with variations
 - **High Accuracy**: Achieves 95%+ accuracy on synthetic test data
 - **Easy to Use**: Simple scripts for training, evaluation, and inference
+- **🌐 Web Interface**: Beautiful, modern web app for easy shape detection
 - **Educational**: Perfect for learning deep learning and computer vision fundamentals
 
 ## Project Structure
@@ -21,6 +22,11 @@ AI-shape-detector-model/
 │   ├── train.py           # Training script
 │   ├── evaluate.py        # Model evaluation
 │   └── predict.py         # Inference on new images
+├── web/                   # 🌐 Web interface
+│   ├── app.py            # Flask backend
+│   ├── templates/        # HTML templates
+│   ├── static/           # CSS, JS, assets
+│   └── README.md         # Web interface docs
 ├── models/                # Saved model checkpoints
 ├── results/               # Training plots and metrics
 ├── requirements.txt       # Python dependencies
@@ -126,6 +132,43 @@ python predict.py --dir path/to/images/folder --save
 ```bash
 python predict.py --image test.png --model models/best_model.pth --save
 ```
+
+## 🌐 Web Interface
+
+Try the beautiful web interface for an easy-to-use experience!
+
+### Quick Start
+
+```bash
+cd web
+pip install -r requirements.txt
+python app.py
+```
+
+Then open **http://localhost:5000** in your browser.
+
+### Features
+
+- 🎨 **Modern, Minimal Design** - Clean and professional interface
+- 📤 **Drag & Drop Upload** - Easy image uploading
+- ⚡ **Real-Time Predictions** - Instant AI analysis
+- 📊 **Confidence Scores** - Visual feedback with all class probabilities
+- 📱 **Responsive** - Works on mobile, tablet, and desktop
+
+### Screenshots
+
+**Upload Interface:**
+- Drag & drop your image
+- Click to browse files
+- Supports PNG, JPG, JPEG, GIF, BMP
+
+**Results Display:**
+- Large predicted shape name
+- Confidence score with color coding
+- Bar chart showing all predictions
+- Processing time
+
+For more details, see [web/README.md](web/README.md)
 
 ## Model Architecture
 
